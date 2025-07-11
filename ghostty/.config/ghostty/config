@@ -2,11 +2,13 @@
 config-file = coolnight
 
 # Keybindings
+keybind = cmd+w=close_tab
+keybind = ctrl+alt+n=new_window
 
 
 # Font
 font-family = JetBrainsMono Nerd Font
-font-size = 15
+font-size = 16
 
 # Layout
 window-padding-x = 20,20
@@ -26,6 +28,3 @@ macos-titlebar-proxy-icon = hidden
 # Auto-Update
 auto-update = check
 auto-update-channel = stable
-
-# Mac App Icon
-macos-icon = blueprint
