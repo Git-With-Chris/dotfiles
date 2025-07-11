@@ -1,0 +1,34 @@
+[user]
+    name = Chris John
+    email = 132337461+Git-With-Chris@users.noreply.github.com.
+
+[core]
+    editor = code -n --wait
+    excludesfile = ~/git/.gitignore_global
+    autocrlf = input
+
+[init]
+    defaultBranch = main
+
+[diff]
+    tool = vscode
+
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+    tool = vscode
+
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+    keepBackup = false
+
+[color]
+    ui = auto
+
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    lg = log --oneline --graph --decorate
