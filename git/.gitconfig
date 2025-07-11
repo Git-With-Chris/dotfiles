@@ -4,7 +4,7 @@
 
 [core]
     editor = code -n --wait
-    excludesfile = ~/git/.gitignore_global
+    excludesfile = ~/.gitignore_global
     autocrlf = input
 
 [init]
@@ -12,6 +12,9 @@
 
 [diff]
     tool = vscode
+
+[difftool]
+    prompt = false
 
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
