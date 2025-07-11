@@ -13,9 +13,11 @@
 .apdisk
 *.icloud
 Icon
-
-### System Files ###
+.env
+.env.local
+*.log
 *.swp
 *.swo
 *.bak
-*~
+
+
