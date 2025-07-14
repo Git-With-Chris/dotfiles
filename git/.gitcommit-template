@@ -1,0 +1,11 @@
+# <type>: <short summary>
+#
+# Details:
+# - Why this change was made
+# - What changed
+#
+# Issue: [reference or remove if N/A]
+#
+# ----
+# type: feat, fix, docs, style, refactor, perf, test, chore, revert
+# Lines starting with # are ignored and will not be included.
