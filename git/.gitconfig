@@ -4,11 +4,14 @@
 
 [core]
     editor = code -n --wait
-    excludesfile = ~/.gitignore_global
+    excludesfile = ~/dotfiles/git/.gitignore_global
     autocrlf = input
 
 [init]
     defaultBranch = main
+
+[commit]
+    template = ~/dotfiles/git/commit-template
 
 [diff]
     tool = vscode
@@ -30,8 +33,12 @@
     ui = auto
 
 [alias]
+    st = status
+    ss = status -s
     co = checkout
     br = branch
-    ci = commit
-    st = status
-    lg = log --oneline --graph --decorate
+    cmt = commit
+    cms = commit -m
+    lgl = "!f() { git --no-pager log -n \"${1:-2}\" --stat --decorate --graph; }; f"
+    lgs = "!f() { git --no-pager log -n \"${1:-10}\" --oneline --graph --decorate --all; }; f"
+    lga = "!git --no-pager log --oneline --graph --decorate --all"
