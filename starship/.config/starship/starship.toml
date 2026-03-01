@@ -1,0 +1,83 @@
+# Prompt Format
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$python\
+$jobs\
+$cmd_duration\
+$line_break\
+$character"""
+
+# Inserts a blank line between prompts
+add_newline = true
+
+# Custom theme palette
+palette = 'coolnight'
+
+# Directory module
+[directory]
+style = 'blue'
+format = '[$path ]($style)'
+truncation_length = 3
+truncation_symbol = '../'
+truncate_to_repo = false
+
+# Substitutions replace specific directory names with icons or custom labels
+[directory.substitutions]
+'Documents' = ' 󰈙 '
+'Downloads' = ' 󰉍 '
+'Music' = '  '
+'Pictures' = '  '
+
+# Git branch module
+[git_branch]
+style = 'fg:green'
+symbol = ' '
+format = '[on](white) [$symbol$branch ]($style)'
+
+# Git status module 
+[git_status]
+style = 'fg:green'
+format = '([$all_status$ahead_behind]($style) )'
+
+# Fill module (alignment spacer)
+[fill]
+symbol = ' '
+
+# Python module
+[python]
+style = 'teal'
+symbol = ' '
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+pyenv_version_name = true
+pyenv_prefix = ''
+
+# Jobs module (background jobs count indicator)
+[jobs]
+symbol = ' '
+style = 'red'
+number_threshold = 1
+format = '[$symbol]($style)'
+
+# Command duration module
+[cmd_duration]
+min_time = 500
+style = 'fg:gray'
+format = '[$duration]($style)'
+
+[palettes.coolnight]
+bg = "#011423"
+fg = "#CBE0F0"
+accent = "#47FF9C"
+selectbg = "#033259"
+black = "#214969"
+red = "#E52E2E"
+green = "#44FFB1"
+yellow = "#FFE073"
+blue = "#0FC5ED"
+purple = "#a277ff"
+cyan = "#24EAF7"
+white = "#CBE0F0"
+muted = "#214969"

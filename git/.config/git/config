@@ -1,0 +1,9 @@
+[user]
+    name = Chris John
+    email = 132337461+Git-With-Chris@users.noreply.github.com.
+
+[init]
+    defaultBranch = main
+    
+[core]
+	excludesFile = /Users/chris/.config/git/ignore
