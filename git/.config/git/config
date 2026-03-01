@@ -1,9 +1,41 @@
 [user]
     name = Chris John
-    email = 132337461+Git-With-Chris@users.noreply.github.com.
+    email = 132337461+Git-With-Chris@users.noreply.github.com
 
 [init]
     defaultBranch = main
-    
+
 [core]
-	excludesFile = /Users/chris/.config/git/ignore
+    editor = nvim
+    excludesFile = /Users/chris/.config/git/ignore
+    autocrlf = input
+    pager = diff-so-fancy | less --tabs=4 -RF
+
+[push]
+    autoSetupRemote = true
+
+[pull]
+    rebase = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[color]
+    ui = always
+
+[color "diff"]
+    meta = 227
+    frag = magenta bold
+    commit = 227 bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
