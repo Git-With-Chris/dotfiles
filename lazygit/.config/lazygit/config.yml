@@ -1,0 +1,25 @@
+gui:
+  nerdFontsVersion: "3"
+  sidePanelWidth: 0.2
+  showCommandLog: false
+  theme:
+    activeBorderColor:
+      - green
+      - bold
+    inactiveBorderColor:
+      - white
+    selectedLineBgColor:
+      - blue
+git:
+  pagers:
+    - colorArg: always
+      pager: diff-so-fancy
+  commit:
+    signOff: false
+  merging:
+    manualCommit: false
+
+keybinding:
+  universal:
+    quit: q
+    return: <esc>

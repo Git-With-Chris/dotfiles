@@ -13,6 +13,9 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_VERIFY
 
+# Set XDG base config directory (default is ~/.config)
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export STARSHIP_CACHE="$HOME/.config/starship/cache"
