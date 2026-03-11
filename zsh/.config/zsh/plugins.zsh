@@ -1,3 +1,6 @@
+# Starship setup
+eval "$(starship init zsh)"
+
 # Completion
 autoload -Uz compinit
 compinit

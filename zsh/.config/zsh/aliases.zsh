@@ -11,7 +11,7 @@ alias cat='bat'
 alias cd='z'
 
 # Package: lazygit (git replacement)
-alias git='lazygit'
+alias lgit='lazygit'
 
 # Show all aliases
 alias showal='bat ~/.config/zsh/aliases.zsh'

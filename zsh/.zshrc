@@ -5,6 +5,3 @@
 [ -f ~/.config/zsh/functions.zsh ] && source ~/.config/zsh/functions.zsh
 [ -f ~/.config/zsh/plugins.zsh ]   && source ~/.config/zsh/plugins.zsh
 
-# Starship setup
-eval "$(starship init zsh)"
-

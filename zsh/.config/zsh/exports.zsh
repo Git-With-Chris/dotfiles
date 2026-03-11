@@ -16,6 +16,9 @@ setopt HIST_VERIFY
 # Set XDG base config directory (default is ~/.config)
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# NodeJS
+export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
+
 # Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export STARSHIP_CACHE="$HOME/.config/starship/cache"
