@@ -9,6 +9,7 @@ $jobs\
 $cmd_duration\
 $line_break\
 $character"""
+right_format = """$conda"""
 
 # Inserts a blank line between prompts
 add_newline = true
@@ -53,6 +54,13 @@ symbol = ' '
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 pyenv_version_name = true
 pyenv_prefix = ''
+
+# Conda Environment module
+[conda]
+symbol = '󰻬 '
+style = 'green'
+format = '[$symbol$environment]($style)'
+ignore_base = true
 
 # Jobs module (background jobs count indicator)
 [jobs]
