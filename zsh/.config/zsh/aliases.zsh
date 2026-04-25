@@ -1,3 +1,9 @@
+# Show all aliases
+alias showal='bat ~/.config/zsh/aliases.zsh'
+
+# Clear
+alias cl='clear'
+
 # Package: eza (ls/tree replacement)
 alias ls='eza --icons=always --group-directories-first'
 alias ll='eza -lh --icons=always --group-directories-first'
@@ -13,9 +19,7 @@ alias cd='z'
 # Package: lazygit (git replacement)
 alias lgit='lazygit'
 
-# Show all aliases
-alias showal='bat ~/.config/zsh/aliases.zsh'
-
 # Package: Jupyter Notebook and Jupyter Lab
 alias jn="jupyter notebook"
 alias jl="jupyter lab"
+
