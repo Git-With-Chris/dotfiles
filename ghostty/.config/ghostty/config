@@ -1,12 +1,15 @@
 # In-built Theme (list themes cmd: ghostty +list-themes)
-# theme = Catppuccin Mocha
+theme = Catppuccin Mocha
 
-# Custom Theme
-config-file = themes/coolnight
+# Control individual elements of in-built theme below
+background = #11111B
+
+# Full Custom Theme
+# config-file = themes/CoolNight
 
 # Font Family
 font-family = "JetBrainsMono Nerd Font"
-font-size = 14
+font-size = 16
 
 # Layout
 window-padding-x = 20,20

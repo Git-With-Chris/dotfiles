@@ -1,91 +1,169 @@
-# Prompt Format
+palette = "catppuccin_mocha"
+add_newline = true
+
 format = """
+$os\
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
 $fill\
-$python\
+$conda\
 $jobs\
 $cmd_duration\
 $line_break\
 $character"""
-right_format = """$conda"""
 
-# Inserts a blank line between prompts
-add_newline = true
+right_format = "$status$time"
 
-# Custom theme palette
-palette = 'coolnight'
+# ── OS ──────────────────────────────────────────────────────────────────────
+[os]
+disabled = false
+style = "subtext1 bold"
+format = "[$symbol ]($style)"
 
-# Directory module
+[os.symbols]
+Macos   = "󰀶"
+Linux   = ""
+Ubuntu  = ""
+Debian  = ""
+Fedora  = ""
+
+# ── Identity (shown only when SSH'd; root always shown) ─────────────────────
+[username]
+show_always = false
+style_user  = "blue bold"
+style_root  = "red bold"
+format      = "[$user]($style)[@]($style)"
+disabled    = false
+
+[hostname]
+ssh_only = true
+style    = "blue"
+format   = "[$hostname]($style) in "
+disabled = false
+
+# ── Directory ───────────────────────────────────────────────────────────────
 [directory]
-style = 'blue'
-format = '[$path ]($style)'
+style             = "blue bold"
+format            = "[$path]($style)[$read_only]($read_only_style) "
 truncation_length = 3
-truncation_symbol = '../'
-truncate_to_repo = false
+truncation_symbol = "…/"
+truncate_to_repo  = true
+read_only         = " 󰌾"
+read_only_style   = "red"
 
-# Substitutions replace specific directory names with icons or custom labels
 [directory.substitutions]
-'Documents' = ' 󰈙 '
-'Downloads' = ' 󰉍 '
-'Music' = '  '
-'Pictures' = '  '
+"Documents" = "󰈙 "
+"Downloads" = "󰉍 "
+"Music"     = "󰝚 "
+"Pictures"  = "󰉏 "
+"dev"       = "󰲋 "
+"Desktop"   = "󰇄 "
 
-# Git branch module
+# ── Git ─────────────────────────────────────────────────────────────────────
 [git_branch]
-style = 'fg:green'
-symbol = ' '
-format = '[on](white) [$symbol$branch ]($style)'
+symbol            = " "
+style             = "mauve bold"
+format            = "on [$symbol$branch(:$remote_branch)]($style) "
+truncation_length = 24
+truncation_symbol = "…"
 
-# Git status module 
 [git_status]
-style = 'fg:green'
-format = '([$all_status$ahead_behind]($style) )'
+style      = "sky"
+format     = "([$all_status$ahead_behind]($style) )"
+ahead      = "⇡${count}"
+behind     = "⇣${count}"
+diverged   = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked  = "?${count}"
+stashed    = "󰏗 ${count}"
+modified   = "!${count}"
+staged     = "+${count}"
+renamed    = "»${count}"
+deleted    = "✘${count}"
+conflicted = "=${count}"
 
-# Fill module (alignment spacer)
-[fill]
-symbol = ' '
+# Lines added/deleted in working tree — useful for tracking analysis changes
+[git_metrics]
+added_style   = "green bold"
+deleted_style = "red bold"
+format        = "([+$added]($added_style) )([-$deleted]($deleted_style) )"
+disabled      = false
 
-# Python module
-[python]
-style = 'teal'
-symbol = ' '
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
-pyenv_version_name = true
-pyenv_prefix = ''
-
-# Conda Environment module
+# ── Conda ───────────────────────────────────────────────────────────────────
 [conda]
-symbol = '󰻬 '
-style = 'green'
-format = '[$symbol$environment]($style)'
+symbol      = " "
+style       = "yellow bold"
+format      = "[$symbol$environment]($style) "
 ignore_base = true
 
-# Jobs module (background jobs count indicator)
+# ── Jobs & Duration ─────────────────────────────────────────────────────────
 [jobs]
-symbol = ' '
-style = 'red'
+symbol           = " "
+style            = "peach bold"
 number_threshold = 1
-format = '[$symbol]($style)'
+format           = "[$symbol$number]($style) "
 
-# Command duration module
 [cmd_duration]
-min_time = 500
-style = 'fg:yellow'
-format = '[$duration]($style)'
+min_time          = 500
+style             = "overlay1"
+format            = "[󱑂 $duration]($style) "
+show_milliseconds = false
 
-[palettes.coolnight]
-bg = "#011423"
-fg = "#CBE0F0"
-accent = "#47FF9C"
-selectbg = "#033259"
-black = "#214969"
-red = "#E52E2E"
-green = "#44FFB1"
-yellow = "#FFE073"
-blue = "#0FC5ED"
-purple = "#a277ff"
-cyan = "#24EAF7"
-white = "#CBE0F0"
-muted = "#214969"
+# ── Status & Character ──────────────────────────────────────────────────────
+[status]
+disabled          = false
+style             = "red bold"
+map_symbol        = true
+symbol            = "󰅚 "
+not_found_symbol  = "󰍉 "
+not_executable_symbol = "󰌾 "
+sigint_symbol     = "󰜺 "
+signal_symbol     = "󱐋 "
+format            = "[$symbol$common_meaning$maybe_int]($style) "
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol   = "[❯](bold red)"
+vimcmd_symbol  = "[❮](bold mauve)"
+
+# ── Time (right prompt) ─────────────────────────────────────────────────────
+[time]
+disabled    = false
+style       = "overlay1"
+format      = "[$time]($style)"
+time_format = "%H:%M"
+
+# ── Fill ────────────────────────────────────────────────────────────────────
+[fill]
+symbol = " "
+
+# ── Catppuccin Mocha Palette ────────────────────────────────────────────────
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo  = "#f2cdcd"
+pink      = "#f5c2e7"
+mauve     = "#cba6f7"
+red       = "#f38ba8"
+maroon    = "#eba0ac"
+peach     = "#fab387"
+yellow    = "#f9e2af"
+green     = "#a6e3a1"
+teal      = "#94e2d5"
+sky       = "#89dceb"
+sapphire  = "#74c7ec"
+blue      = "#89b4fa"
+lavender  = "#b4befe"
+text      = "#cdd6f4"
+subtext1  = "#bac2de"
+subtext0  = "#a6adc8"
+overlay2  = "#9399b2"
+overlay1  = "#7f849c"
+overlay0  = "#6c7086"
+surface2  = "#585b70"
+surface1  = "#45475a"
+surface0  = "#313244"
+base      = "#1e1e2e"
+mantle    = "#181825"
+crust     = "#11111b"
