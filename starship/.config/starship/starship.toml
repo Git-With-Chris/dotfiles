@@ -56,14 +56,6 @@ truncate_to_repo  = true
 read_only         = " 󰌾"
 read_only_style   = "red"
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = "󰉍 "
-"Music"     = "󰝚 "
-"Pictures"  = "󰉏 "
-"dev"       = "󰲋 "
-"Desktop"   = "󰇄 "
-
 # ── Git ─────────────────────────────────────────────────────────────────────
 [git_branch]
 symbol            = " "
