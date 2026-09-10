@@ -1,5 +1,8 @@
 # Dotfiles
 
+> **Linux / RStudio Server?** See [LINUX.md](LINUX.md) for the bootstrap
+> script. The notes below describe the macOS/Stow setup.
+
 Personal macOS development environment managed using **GNU Stow**.
 
 This repository contains configuration files ("dotfiles") for terminal,
