@@ -1,0 +1,19 @@
+# name|version|asset|url
+# Linux x86_64 static builds, pinned to the same versions as the Windows setup.
+# musl builds are used where offered - they carry no glibc version requirement,
+# which matters on older server distributions.
+#
+# air is the one exception: Posit ship only a glibc build, so it is dynamically
+# linked. On a very old server it may fail with GLIBC_2.xx not found; the other
+# seven are static and run anywhere x86_64.
+#
+# install-linux.sh locates the binary by searching the extracted tree for a file
+# named after the tool, so archive layout differences do not need encoding here.
+starship|1.25.1|starship-x86_64-unknown-linux-musl.tar.gz|https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-unknown-linux-musl.tar.gz
+eza|0.23.5|eza_x86_64-unknown-linux-musl.tar.gz|https://github.com/eza-community/eza/releases/download/v0.23.5/eza_x86_64-unknown-linux-musl.tar.gz
+bat|0.26.1|bat-v0.26.1-x86_64-unknown-linux-musl.tar.gz|https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-musl.tar.gz
+fd|10.5.0|fd-v10.5.0-x86_64-unknown-linux-musl.tar.gz|https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-x86_64-unknown-linux-musl.tar.gz
+fzf|0.74.3|fzf-0.74.3-linux_amd64.tar.gz|https://github.com/junegunn/fzf/releases/download/v0.74.3/fzf-0.74.3-linux_amd64.tar.gz
+zoxide|0.10.0|zoxide-0.10.0-x86_64-unknown-linux-musl.tar.gz|https://github.com/ajeetdsouza/zoxide/releases/download/v0.10.0/zoxide-0.10.0-x86_64-unknown-linux-musl.tar.gz
+lazygit|0.62.2|lazygit_0.62.2_linux_x86_64.tar.gz|https://github.com/jesseduffield/lazygit/releases/download/v0.62.2/lazygit_0.62.2_linux_x86_64.tar.gz
+air|0.11.0|air-x86_64-unknown-linux-gnu.tar.gz|https://github.com/posit-dev/air/releases/download/0.11.0/air-x86_64-unknown-linux-gnu.tar.gz

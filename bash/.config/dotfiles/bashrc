@@ -1,0 +1,76 @@
+# ~/.config/dotfiles/bashrc
+#
+# Linux counterpart to the Windows PowerShell profile. Sourced from ~/.bashrc by
+# a single line that install-linux.sh appends, so your own ~/.bashrc (and
+# anything the server administrator put there) is never overwritten.
+#
+# Every block is guarded: a missing tool degrades quietly rather than printing an
+# error on every new terminal.
+
+# ── PATH ────────────────────────────────────────────────────────────────────
+# install-linux.sh puts every binary here; no root required.
+case ":${PATH}:" in
+  *":${HOME}/.local/bin:"*) ;;
+  *) PATH="${HOME}/.local/bin:${PATH}" ;;
+esac
+export PATH
+
+# ── Terminal capabilities ───────────────────────────────────────────────────
+# tcell (which lazygit is built on) converts its named colours to hardcoded RGB
+# when it thinks truecolor is available, bypassing the terminal palette. That
+# makes lazygit ignore the Catppuccin theme. Force palette mode.
+export TCELL_TRUECOLOR=disable
+
+# ── Environment ─────────────────────────────────────────────────────────────
+if command -v nvim >/dev/null 2>&1; then
+  export EDITOR=nvim
+elif command -v vim >/dev/null 2>&1; then
+  export EDITOR=vim
+fi
+[ -n "${EDITOR:-}" ] && export VISUAL="${EDITOR}"
+
+if command -v fd >/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+fi
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+# ── Starship prompt ─────────────────────────────────────────────────────────
+export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
+
+if command -v starship >/dev/null 2>&1; then
+  # The $fill module pads the prompt to exactly the reported terminal width.
+  # RStudio's terminal pane over-reports by one column, which wraps the last
+  # character of the right-aligned clock onto its own line. A one-column right
+  # margin is invisible elsewhere, so apply it everywhere.
+  # Substituting with sed rather than bash parameter expansion: the pattern
+  # contains ${...} and escaping that inside ${var//pat/rep} silently mangles
+  # the line instead of replacing it.
+  eval "$(starship init bash --print-full-init \
+    | sed 's|--terminal-width="${COLUMNS}"|--terminal-width="$((COLUMNS - 1))"|')"
+fi
+
+# ── zoxide (cd = z) ─────────────────────────────────────────────────────────
+# --cmd cd replaces cd itself, so plain `cd` gets frecency jumping and `cdi`
+# opens the interactive picker. Plain `cd <real path>` still works as before.
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init bash --cmd cd)"
+fi
+
+# ── Aliases (mirrors zsh/.config/zsh/aliases.zsh) ───────────────────────────
+# Unlike PowerShell, bash aliases carry arguments, so these stay simple.
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza --icons=always --group-directories-first'
+  alias ll='eza -lh --icons=always --group-directories-first'
+  alias la='eza -lah --icons=always --group-directories-first'
+  alias lt='eza --tree --icons=always --group-directories-first'
+fi
+
+if command -v bat >/dev/null 2>&1; then
+  alias cat='bat'
+  alias showal='bat ~/.config/dotfiles/bashrc'
+fi
+
+alias cl='clear'
+
+command -v lazygit >/dev/null 2>&1 && alias lgit='lazygit'
+command -v jupyter >/dev/null 2>&1 && { alias jn='jupyter notebook'; alias jl='jupyter lab'; }
