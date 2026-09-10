@@ -1,4 +1,7 @@
-palette = "catppuccin_mocha"
+# palette intentionally NOT set. RStudio quantises 24-bit colour to the 16
+# ANSI slots, so the styles below use ANSI names instead of hex. Both WezTerm
+# and RStudio map those slots to the same Catppuccin values, so the two render
+# identically. The [palettes] block below is kept for reference and is inert.
 add_newline = true
 
 format = """
@@ -21,15 +24,15 @@ right_format = ""
 
 # ── OS ──────────────────────────────────────────────────────────────────────
 [os]
-disabled = false
-style = "subtext1 bold"
+disabled = true
+style = "white"
 format = "[$symbol ]($style)"
 
 [os.symbols]
-Macos   = "󰘳"
+Macos   = ""
 Linux   = ""
 Ubuntu  = ""
-Debian  = ""
+Debian  = "" 
 Fedora  = ""
 
 # ── Identity (shown only when SSH'd; root always shown) ─────────────────────
@@ -51,31 +54,31 @@ disabled = false
 style             = "yellow"
 format            = "[$path]($style)[$read_only]($read_only_style) "
 truncation_length = 3
-truncation_symbol = " ~/"
+truncation_symbol = "~/"
 truncate_to_repo  = true
-read_only         = " 󰌾"
+read_only         = " "
 read_only_style   = "red"
 
 # ── Git ─────────────────────────────────────────────────────────────────────
 [git_branch]
 symbol            = " "
-style             = "mauve"
+style             = "bright-purple"
 format            = "on [$symbol$branch(:$remote_branch)]($style) "
 truncation_length = 24
 truncation_symbol = "…"
 
 [git_status]
-style      = "flamingo bold"
+style      = "purple"
 format     = "([$all_status$ahead_behind]($style) )"
-ahead      = "⇡${count}"
-behind     = "⇣${count}"
-diverged   = "⇕⇡${ahead_count}⇣${behind_count}"
+ahead      = "${count}"
+behind     = "${count}"
+diverged   = "${ahead_count}${behind_count}"
 untracked  = "?${count}"
-stashed    = "󰏗 ${count}"
+stashed    = " ${count}"
 modified   = "!${count}"
 staged     = "+${count}"
 renamed    = "»${count}"
-deleted    = "✘${count}"
+deleted    = "${count}"
 conflicted = "=${count}"
 
 # Lines added/deleted in working tree — useful for tracking analysis changes
@@ -95,14 +98,14 @@ ignore_base = true
 # ── Jobs & Duration ─────────────────────────────────────────────────────────
 [jobs]
 symbol           = " "
-style            = "peach bold"
+style            = "bright-yellow"
 number_threshold = 1
 format           = "[$symbol$number]($style) "
 
 [cmd_duration]
 min_time          = 500
-style             = "overlay1"
-format            = "[󱑂 $duration]($style) "
+style             = "bright-black"
+format            = "[ $duration]($style) "
 show_milliseconds = false
 
 # ── Status & Character ──────────────────────────────────────────────────────
@@ -110,23 +113,23 @@ show_milliseconds = false
 disabled          = false
 style             = "red bold"
 map_symbol        = true
-symbol            = "󰅚 "
-not_found_symbol  = "󰍉 "
-not_executable_symbol = "󰌾 "
-sigint_symbol     = "󰜺 "
-signal_symbol     = "󱐋 "
+symbol            = " "
+not_found_symbol  = " "
+not_executable_symbol = " "
+sigint_symbol     = " "
+signal_symbol     = " "
 format            = "[$symbol$common_meaning$maybe_int]($style) "
 
 [character]
 success_symbol = "[❯](bold green)"
 error_symbol   = "[❯](bold red)"
-vimcmd_symbol  = "[❮](bold mauve)"
+vimcmd_symbol  = "[❮](bright-purple)"
 
 # ── Time (right prompt) ─────────────────────────────────────────────────────
 [time]
 disabled    = false
-style       = "overlay1"
-format      = "[$time]($style)"
+style       = "bright-black"
+format      = "[$time]($style) "
 time_format = "%I:%M"
 
 # ── Fill ────────────────────────────────────────────────────────────────────
@@ -139,15 +142,11 @@ rosewater = "#f5e0dc"
 flamingo  = "#f2cdcd"
 pink      = "#f5c2e7"
 mauve     = "#cba6f7"
-red       = "#f38ba8"
 maroon    = "#eba0ac"
 peach     = "#fab387"
-yellow    = "#f9e2af"
-green     = "#a6e3a1"
 teal      = "#94e2d5"
 sky       = "#89dceb"
 sapphire  = "#74c7ec"
-blue      = "#89b4fa"
 lavender  = "#b4befe"
 text      = "#cdd6f4"
 subtext1  = "#bac2de"
