@@ -176,6 +176,10 @@ link "bash/.config/dotfiles/bashrc"            "${CFG}/dotfiles/bashrc"        |
 link "lazygit/.config/lazygit/config.yml"      "${CFG}/lazygit/config.yml"     || FAILED=$((FAILED + 1))
 link "rstudio/.config/rstudio/themes/catppuccin-mocha.rstheme" "${CFG}/rstudio/themes/catppuccin-mocha.rstheme" || FAILED=$((FAILED + 1))
 link "R/.Rprofile"                             "${HOME}/.Rprofile"             || FAILED=$((FAILED + 1))
+# ~/.config/git/ is git's native XDG location, so linking here both applies
+# the repo config and makes ~/.gitconfig unnecessary.
+link "git/.config/git/config"                      "${CFG}/git/config"             || FAILED=$((FAILED + 1))
+link "git/.config/git/ignore"                      "${CFG}/git/ignore"             || FAILED=$((FAILED + 1))
 
 # ── ~/.bashrc hook ──────────────────────────────────────────────────────────
 title "Shell hook"
