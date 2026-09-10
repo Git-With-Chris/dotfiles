@@ -21,6 +21,17 @@ export PATH
 # makes lazygit ignore the Catppuccin theme. Force palette mode.
 export TCELL_TRUECOLOR=disable
 
+# ── Keep $HOME tidy ─────────────────────────────────────────────────────────
+# Tools that allow relocating their state get pointed at ~/.local/state. This
+# thins $HOME out; it cannot empty it. bash's own rc files, ~/.ssh and
+# ~/.Rprofile have their paths compiled in and must stay where they are.
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
+export HISTFILE="${XDG_STATE_HOME}/bash/history"
+
+# bash silently keeps no history if the directory is missing.
+mkdir -p "${XDG_STATE_HOME}/less" "${XDG_STATE_HOME}/bash"
+
 # ── Environment ─────────────────────────────────────────────────────────────
 if command -v nvim >/dev/null 2>&1; then
   export EDITOR=nvim
