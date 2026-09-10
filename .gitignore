@@ -3,3 +3,8 @@
 .AppleDouble
 .LSOverride
 ._*
+
+# Left behind when switching from a branch that has it: git will not delete
+# ignored files, so bootstrap/vendor/'s Linux tarballs (~24 MB) survive the
+# checkout. Ignore the whole directory so they can never be committed here.
+bootstrap/
