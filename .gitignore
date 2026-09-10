@@ -1,9 +1,3 @@
-# Downloaded Linux binaries for the offline install path (fetch-vendor.ps1).
-# ~24 MB of release tarballs - fetched on demand, not source, so not committed.
-# For an air-gapped server: clone the repo there, then copy bootstrap/vendor/
-# across separately and run ./install-linux.sh --offline
-bootstrap/vendor/*
-!bootstrap/vendor/.gitkeep
-
-# macOS
-.DS_Store
+# Windows
+Thumbs.db
+desktop.ini
