@@ -1,7 +1,7 @@
 # Dotfiles
 
-> **Linux / RStudio Server?** See [LINUX.md](LINUX.md) for the bootstrap
-> script. The notes below describe the macOS/Stow setup.
+> **Linux / RStudio Server branch.** Setup notes: [LINUX.md](LINUX.md).
+> macOS and Windows live on `dotfiles-macos` and `dotfiles-windows`.
 
 Personal macOS development environment managed using **GNU Stow**.
 
