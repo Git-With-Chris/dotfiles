@@ -7,7 +7,7 @@
 
 [core]
     editor = nvim
-    excludesFile = /Users/chris/.config/git/ignore
+    excludesFile = ~/.config/git/ignore
     autocrlf = input
     pager = diff-so-fancy | less --tabs=4 -RF
 
@@ -24,7 +24,7 @@
     colorMoved = default
 
 [color]
-    ui = always
+    ui = auto
 
 [color "diff"]
     meta = 227
